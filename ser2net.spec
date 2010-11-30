@@ -5,7 +5,7 @@ Name: ser2net
 Version: 2.7
 Release: %mkrel 1
 License: GPL v2+
-Group: Networking/Daemons
+Group: System/Servers
 Source0: http://dl.sourceforge.net/ser2net/%{name}-%{version}.tar.gz
 Source1: ser2net.init
 URL: http://ser2net.sourceforge.net/
