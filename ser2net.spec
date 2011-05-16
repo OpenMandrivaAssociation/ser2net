@@ -1,54 +1,46 @@
-Summary: Serial to network proxy
-Summary(pl.UTF-8): Proxy między portem szeregowym a siecią
-Summary(ru.UTF-8): Параллельный порт поверх IP сети
-Name: ser2net
-Version: 2.7
-Release: %mkrel 1
-License: GPL v2+
-Group: System/Servers
-Source0: http://dl.sourceforge.net/ser2net/%{name}-%{version}.tar.gz
-Source1: ser2net.init
-URL: http://ser2net.sourceforge.net/
-BuildRequires: autoconf, automake, libtool, libwrap-devel
-BuildRoot: %{tmpdir}/%{name}-%{version}
+Summary:	Serial to network proxy
+Name:		ser2net
+Version:	2.7
+Release:	%mkrel 2
+License:	GPLv2+
+Group:		System/Servers
+Source0:	http://dl.sourceforge.net/ser2net/%{name}-%{version}.tar.gz
+Source1:	ser2net.init
+URL:		http://ser2net.sourceforge.net/
+BuildRequires:	libwrap-devel
+Requires(pre):		rpm-helper
+Requires(preun):	rpm-helper
 
 %description
 Make serial ports available to network via TCP/IP connection.
-
-%description -l pl.UTF-8
-Program udostępniający porty szeregowe przez połączenie TCP/IP.
-
-%description -l ru.UTF-8
-Данная программа позволяет предоставить доступ к параллельному порту (COM) через IP сеть.
 
 %prep
 %setup -q
 
 %build
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__automake}
-%configure --with-tcp-wrappers
+%configure2_5x --with-tcp-wrappers
 %make
 
 %install
 rm -rf %{buildroot}
-%{__install} -d %{buildroot}/%{_sysconfdir}
+%makeinstall_std
 
-%makeinstall
-
-%{__install} %{name}.conf %{buildroot}/%{_sysconfdir}
-%{__install} -d %{buildroot}/%{_sysconfdir}/etc/rc.d/init.d
-%{__install} -Dpm755 %{SOURCE1} %{buildroot}/%{_sysconfdir}/init.d/%{name}
+%{__install} -Dpm644 %{name}.conf %{buildroot}/%{_sysconfdir}/%{name}.conf
+%{__install} -Dpm755 %{SOURCE1} %{buildroot}/%{_initrddir}/%{name}
 
 %clean
 rm -rf %{buildroot}
 
+%post
+%_post_service %{name}
+
+%preun
+%_preun_service %{name}
+
 %files
-%defattr(644,root,root,755)
+%defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_sbindir}/ser2net
-%attr(755,root,root) %{_sysconfdir}/init.d/%{name}
+%{_sbindir}/ser2net
 %{_mandir}/man8/ser2net.8*
+%{_initrddir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}.conf
