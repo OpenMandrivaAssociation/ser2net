@@ -44,3 +44,20 @@ rm -rf %{buildroot}
 %{_mandir}/man8/ser2net.8*
 %{_initrddir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}.conf
+
+
+%changelog
+* Mon May 16 2011 Jani Välimaa <wally@mandriva.org> 2.7-2mdv2011.0
++ Revision: 675031
+- clean .spec
+- add post and preun for service
+- clean init file (make rpmlint happy)
+
+* Tue Nov 30 2010 Eugeni Dodonov <eugeni@mandriva.com> 2.7-1mdv2011.0
++ Revision: 603622
+- Fixed group.
+
+  + zamir <zamir@mandriva.org>
+    - first build
+    - Created package structure for ser2net.
+
