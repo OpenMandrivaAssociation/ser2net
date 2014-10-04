@@ -1,7 +1,7 @@
 Summary:	Serial to network proxy
 Name:		ser2net
 Version:	2.9.1
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Servers
 Source0:	http://dl.sourceforge.net/ser2net/%{name}-%{version}.tar.gz
