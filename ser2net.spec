@@ -32,7 +32,7 @@ Make serial ports available to network via TCP/IP connection.
 %systemd_preun ser2net.service
 
 %postun
-%systemd_postun_with_restart ser2net.service.
+%systemd_postun_with_restart ser2net.service
 
 %files
 %doc AUTHORS ChangeLog NEWS README
