@@ -1,2 +1,4 @@
+removed_sources:
+  ser2net-2.7.tar.gz: ebceb41479ce5e33f400b1564d420dc12b6b44f6
 sources:
-  "ser2net-2.7.tar.gz": ebceb41479ce5e33f400b1564d420dc12b6b44f6
+  ser2net-2.9.1.tar.gz: dc8662a1c83391a6b437bc9d2443fb7a65548a9a
