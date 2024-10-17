@@ -6,7 +6,7 @@ License:	GPLv2+
 Group:		System/Servers
 Source0:	http://dl.sourceforge.net/ser2net/%{name}-%{version}.tar.gz
 Source1:	ser2net.service
-URL:		http://ser2net.sourceforge.net/
+URL:		https://ser2net.sourceforge.net/
 BuildRequires:	libwrap-devel
 
 %description
