@@ -7,6 +7,11 @@ Group:		System/Servers
 Source0:	http://dl.sourceforge.net/ser2net/%{name}-%{version}.tar.gz
 Source1:	ser2net.service
 URL:		https://ser2net.sourceforge.net/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libwrap-devel
 
 %description
